@@ -33,9 +33,9 @@
 %---------------------------------------------------------------------
 % TOC
 %---------------------------------------------------------------------
-\useoutertheme[subsection=false,shadow]{miniframes}
-\setbeamertemplate{section in toc}[sections numbered]
-\setbeamertemplate{subsection in toc}[subsections numbered]
+%\useoutertheme[subsection=false,shadow]{miniframes}
+%\setbeamertemplate{section in toc}[sections numbered]
+%\setbeamertemplate{subsection in toc}[subsections numbered]
 
 %---------------------------------------------------------------------
 % custom commands
@@ -72,17 +72,17 @@
 	\AddToShipoutPictureFG*{\includegraphics[width=\paperwidth]{img/bannerbasso0}}
 	\begin{minipage}[t][\paperheight]{\textwidth}
 	\vspace*{5mm}
-	\includegraphics[height=14mm]{img/logoLearnPAd_v3_3}
+	\includegraphics[height=25mm]{img/logoLearnPAd_v3_3}
 	\hspace*{5mm}
 	\includegraphics[height=12mm]{img/bannerLearnPAd_v3_3}\par
 	\vspace*{10mm}
 	\ifx\insertsubtitle\@empty%
 	\else%
-		{\usebeamerfont{title}\usebeamercolor[fg]{title}\MakeUppercase{\centerline{\inserttitle}}\par}%
+		{\centering{\usebeamerfont{title}\usebeamercolor[fg]{title}\MakeUppercase{\inserttitle}\par}}%
 	\fi%
 	\ifx\insertsubtitle\@empty%
 	\else%
-		{\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\centerline{\insertsubtitle}\par}%
+		{\centering{\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}}%
 		\vspace*{5mm}
 	\fi%
 	
@@ -91,17 +91,17 @@
 	
 	\ifx\insertauthor\@empty%
 	\else%
-		{\usebeamerfont{author}\usebeamercolor[fg]{author}\centerline{\insertauthor}\par}%
+		{\centering{\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor \par}}%
 	\fi%
 	\ifx\insertinstitute\@empty%
 	\else%
 		\vspace*{3mm}
-		{\usebeamerfont{institute}\usebeamercolor[fg]{institute}\centerline{\insertinstitute}\par}%
+		{\centering{\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par}}%
 	\fi% 
 	\vspace*{5mm}
 	\ifx\insertdate\@empty%
 	\else%
-		{\usebeamerfont{date}\usebeamercolor[fg]{date}\centerline{\insertdate}\par}%
+		{\centering{\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par}}%
 	\fi% 
 	%\vfill
 	\end{minipage}
@@ -143,9 +143,9 @@
 %---------------------------------------------------------------------
 \setbeamertemplate{frametitle}
 {
-\begin{beamercolorbox}[wd=\paperwidth,leftskip=0.3cm,rightskip=0.3cm,ht=15mm,dp=1.5ex]{frametitle}
-	 \includegraphics[height=14mm]{img/logoLearnPAd_v3_3}\hspace*{5mm}
-	 \usebeamerfont{frametitle}\MakeUppercase{\insertframetitle}%
+\begin{beamercolorbox}[wd=\paperwidth,leftskip=0.3cm,rightskip=0.3cm,ht=20mm,dp=1.5ex]{frametitle}
+	 \includegraphics[height=20mm]{img/logoLearnPAd_v3_3}\hspace*{10mm}
+	 \usebeamerfont{frametitle} \MakeUppercase{\insertframetitle}%
 \end{beamercolorbox}
 }
 
