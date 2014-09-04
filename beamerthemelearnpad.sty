@@ -1,0 +1,195 @@
+% Name           : beamerthemelearnpad.sty
+% Author         : G. O. Spagnolo (spagnolo@isti.cnr.it)
+% Version        : 0.01
+% Created on     : 4.9.2014
+% Last Edited on : 4.9.2014
+% Copyright      : Copyright (c) 2013-2014 by . All rights reserved.
+% License        : This file may be distributed and/or modified under the
+%                  GNU Public License.
+% Description    : 
+
+\ProvidesPackage{beamerthemelearnpad}[2014/09/04]
+
+\usepackage{eso-pic}
+
+\usecolortheme{rose}
+\useinnertheme[shadow]{rounded}
+\usecolortheme{dolphin}
+\useoutertheme{infolines}
+
+\newif\if@doSans
+\@doSansfalse
+\DeclareOption{noserifmath}{\@doSanstrue}
+\newif\if@doNoFlama
+\@doNoFlamafalse
+\DeclareOption{noflama}{\@doNoFlamatrue}
+\newif\if@doSectionPage
+\@doSectionPagefalse
+\DeclareOption{nosectionpages}{\@doSectionPagetrue}
+\ProcessOptions
+
+\mode<presentation>
+
+%---------------------------------------------------------------------
+% TOC
+%---------------------------------------------------------------------
+\useoutertheme[subsection=false,shadow]{miniframes}
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
+
+%---------------------------------------------------------------------
+% custom commands
+%---------------------------------------------------------------------
+\newcommand{\rightTextArrow}{→}
+\newcommand{\quoted}[1]{›#1‹}
+\newcommand{\doublequoted}[1]{»#1«}
+
+%---------------------------------------------------------------------
+% Itemize
+%---------------------------------------------------------------------
+\setbeamertemplate{itemize item}{\rightTextArrow}
+\setbeamertemplate{itemize subitem}{\rightTextArrow}
+\setbeamertemplate{itemize subsubitem}{\rightTextArrow}
+
+\setlength{\parskip}{0.5em}
+
+%---------------------------------------------------------------------
+% Colors
+%---------------------------------------------------------------------
+
+
+
+%---------------------------------------------------------------------
+% Titlepage
+%---------------------------------------------------------------------
+
+% Titlepage structure
+\def\maketitle{\ifbeamer@inframe\titlepage\else\frame[plain]{\titlepage}\fi}
+\def\titlepage{\usebeamertemplate{title page}}
+\setbeamertemplate{title page}
+{
+	% Add background to title page
+	\AddToShipoutPictureFG*{\includegraphics[width=\paperwidth]{img/bannerbasso0}}
+	\begin{minipage}[t][\paperheight]{\textwidth}
+	\vspace*{5mm}
+	\includegraphics[height=14mm]{img/logoLearnPAd_v3_3}
+	\hspace*{5mm}
+	\includegraphics[height=12mm]{img/bannerLearnPAd_v3_3}\par
+	\vspace*{10mm}
+	\ifx\insertsubtitle\@empty%
+	\else%
+		{\usebeamerfont{title}\usebeamercolor[fg]{title}\MakeUppercase{\centerline{\inserttitle}}\par}%
+	\fi%
+	\ifx\insertsubtitle\@empty%
+	\else%
+		{\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\centerline{\insertsubtitle}\par}%
+		\vspace*{5mm}
+	\fi%
+	
+	
+	%\vfill
+	
+	\ifx\insertauthor\@empty%
+	\else%
+		{\usebeamerfont{author}\usebeamercolor[fg]{author}\centerline{\insertauthor}\par}%
+	\fi%
+	\ifx\insertinstitute\@empty%
+	\else%
+		\vspace*{3mm}
+		{\usebeamerfont{institute}\usebeamercolor[fg]{institute}\centerline{\insertinstitute}\par}%
+	\fi% 
+	\vspace*{5mm}
+	\ifx\insertdate\@empty%
+	\else%
+		{\usebeamerfont{date}\usebeamercolor[fg]{date}\centerline{\insertdate}\par}%
+	\fi% 
+	%\vfill
+	\end{minipage}
+}
+
+%---------------------------------------------------------------------
+% Sectionpages
+%---------------------------------------------------------------------
+\setbeamertemplate{headline}
+{%
+ % \includegraphics[height=14mm]{img/logoLearnPAd_v3_3}
+} 
+
+
+% Make Sectionhead uppercase
+\newcommand{\insertsectionHEAD}{%
+	\expandafter\insertsectionHEADaux\insertsectionhead}
+	\newcommand{\insertsectionHEADaux}[3]{\MakeUppercase{#3}
+}
+
+\if@doSectionPage\@empty
+\else
+% Insert frame with section title at every section start
+\AtBeginSection[]
+{
+
+\begingroup
+%\setbeamercolor{background canvas}{bg=hsrmWarmGreyDark}
+\begin{frame}[plain]
+\centering
+\vfill\usebeamerfont{section title}\textcolor{blue}{\insertsectionHEAD}\vfill
+\end{frame}
+\endgroup
+}
+\fi
+
+%---------------------------------------------------------------------
+% Frametitle
+%---------------------------------------------------------------------
+\setbeamertemplate{frametitle}
+{
+\begin{beamercolorbox}[wd=\paperwidth,leftskip=0.3cm,rightskip=0.3cm,ht=15mm,dp=1.5ex]{frametitle}
+	 \includegraphics[height=14mm]{img/logoLearnPAd_v3_3}\hspace*{5mm}
+	 \usebeamerfont{frametitle}\MakeUppercase{\insertframetitle}%
+\end{beamercolorbox}
+}
+
+
+%\setbeamertemplate{headline}
+%{%
+%  \includegraphics[height=14mm]{img/logoLearnPAd_v3_3}
+%} 
+
+%---------------------------------------------------------------------
+% Footline
+%---------------------------------------------------------------------
+\usenavigationsymbolstemplate{}
+\setbeamertemplate{footline}
+{%
+\includegraphics[width=\paperwidth]{img/bannerbasso1}
+%\begin{beamercolorbox}[wd=\textwidth,ht=3ex,dp=1.5ex,leftskip=0.3cm,rightskip=0.3cm]{structure}%
+%\hfill\usebeamerfont{page number in head/foot}%
+%\insertframenumber%
+%\end{beamercolorbox}%
+}
+
+%---------------------------------------------------------------------
+% Captions
+%---------------------------------------------------------------------
+\setbeamertemplate{caption label separator}{: }
+
+%---------------------------------------------------------------------
+% Blocks
+%---------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------
+% Images
+%---------------------------------------------------------------------
+
+\newbox\mytempbox
+\newdimen\mytempdimen
+
+\newcommand\includegraphicscopyright[3][]{%
+  \leavevmode\vbox{\vskip3pt\raggedright\setbox\mytempbox=\hbox{\includegraphics[#1]{#2}}%
+    \mytempdimen=\wd\mytempbox\box\mytempbox\par\vskip1pt%
+    \usebeamerfont{copyright text}{\usebeamercolor[fg]{copyright text}{\vbox{\hsize=\mytempdimen#3}}}\vskip3pt%
+}}
+
+\mode
+<all>
