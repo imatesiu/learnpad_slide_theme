@@ -76,9 +76,9 @@
 	\hspace*{5mm}
 	\includegraphics[height=12mm]{img/bannerLearnPAd_v3_3}\par
 	\vspace*{10mm}
-	\ifx\insertsubtitle\@empty%
+	\ifx\inserttitle\@empty%
 	\else%
-		{\centering{\usebeamerfont{title}\usebeamercolor[fg]{title}\MakeUppercase{\inserttitle}\par}}%
+		{\centering{\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}}%
 	\fi%
 	\ifx\insertsubtitle\@empty%
 	\else%
@@ -145,7 +145,7 @@
 {
 \begin{beamercolorbox}[wd=\paperwidth,leftskip=0.3cm,rightskip=0.3cm,ht=20mm,dp=1.5ex]{frametitle}
 	 \includegraphics[height=20mm]{img/logoLearnPAd_v3_3}\hspace*{10mm}
-	 \usebeamerfont{frametitle} \MakeUppercase{\insertframetitle}%
+	 \usebeamerfont{frametitle} \insertframetitle%
 \end{beamercolorbox}
 }
 
