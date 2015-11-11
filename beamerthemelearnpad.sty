@@ -1,14 +1,14 @@
 % Name           : beamerthemelearnpad.sty
 % Author         : G. O. Spagnolo (spagnolo@isti.cnr.it)
-% Version        : 0.01
+% Version        : 0.02
 % Created on     : 4.9.2014
-% Last Edited on : 4.9.2014
+% Last Edited on : 11.11.2015
 % Copyright      : Copyright (c) 2013-2014 by . All rights reserved.
 % License        : This file may be distributed and/or modified under the
 %                  GNU Public License.
 % Description    : 
 
-\ProvidesPackage{beamerthemelearnpad}[2014/09/04]
+\ProvidesPackage{beamerthemelearnpad}[2015/11/11]
 
 \usepackage{eso-pic}
 
@@ -132,7 +132,8 @@
 %\setbeamercolor{background canvas}{bg=hsrmWarmGreyDark}
 \begin{frame}[plain]
 \centering
-\vfill\usebeamerfont{section title}\textcolor{blue}{\insertsectionHEAD}\vfill
+%\vfill\usebeamerfont{section title}\textcolor{blue}{\insertsectionHEAD}\vfill
+\vfill\usebeamerfont{section title}\usebeamercolor[fg]{title}{\insertsectionHEAD}\vfill
 \end{frame}
 \endgroup
 }
@@ -143,10 +144,21 @@
 %---------------------------------------------------------------------
 \setbeamertemplate{frametitle}
 {
-\begin{beamercolorbox}[wd=\paperwidth,leftskip=0.3cm,rightskip=0.3cm,ht=20mm,dp=1.5ex]{frametitle}
-	 \includegraphics[height=20mm]{img/logoLearnPAd_v3_3}\hspace*{10mm}
-	 \usebeamerfont{frametitle} \insertframetitle%
+\begin{beamercolorbox}[wd=\paperwidth,leftskip=0.3cm,rightskip=0.3cm,ht=15mm,dp=1.5ex]{frametitle}
+	\hbox{\includegraphics[height=15mm]{img/logoLearnPAd_v3_3}%\hspace*{2mm}
+	} \begin{minipage}[b]{90mm}
+	 {\usebeamercolor{frametitle}\usebeamerfont*{frametitle}\strut\insertframetitle\strut}
+    \ifx\insertframesubtitle\@empty%
+      \strut\par%
+    \else%
+     \par{\usebeamerfont*{frametitle}{\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}\par}%
+    \fi
+    \end{minipage}
 \end{beamercolorbox}
+%\begin{beamercolorbox}[wd=\paperwidth,leftskip=0.3cm,rightskip=0.3cm,ht=15mm,dp=1.5ex]{frametitle}
+%	 \includegraphics[height=15mm]{img/logoLearnPAd_v3_3}\hspace*{10mm}
+%	 \usebeamerfont{frametitle} {\centering \insertframetitle}%
+%\end{beamercolorbox}
 }
 
 
